@@ -1,0 +1,23 @@
+<div class="panel panel-default">
+  <div class="panel-heading"> <h3> All Friends </h3></div>
+  <br>
+  <br>
+  <div class="panel-body">
+    <table class="table table-bordered table-hover" style="width: 50%" >
+      <tr>
+        <th>Email Address</th>
+      </tr>
+      <% @friends.each do |user| %>
+        <tr>
+          <td><%= user.email %></td>
+          <td>
+            <% if current_user.friend_with? user  %>
+              <%= link_to "Unfriend", friendship_path(user), :method => "delete", :class => 'btn btn-mini' %>
+            <% end %>
+          </td>
+        </tr>
+      <% end %>
+    </table>
+  </div>
+</div>
+<%= link_to "Back to Contacts List", contacts_path %>

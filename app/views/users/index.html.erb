@@ -1,0 +1,28 @@
+<div class="panel panel-default">
+  <div class="panel-heading"> <h3> Friend Requests </h3></div>
+  <br>
+  <br>
+  <div class="panel-body">
+    <table class="table table-bordered table-hover" style="width: 50%" >
+      <tr>
+        <th>Email Address</th>
+      </tr>
+      <% @users.each do |user| %>
+        <tr>
+          <td><%= user.email %></td>
+          <td>
+            <% if current_user.invited? user  %>
+              <span class="btn btn-mini disabled">Pending</span>
+            <% elsif user.invited? current_user  %>
+              <%= link_to "Accept", friendship_path(user), :method => "put", :class => 'request-approve btn btn-mini' %>
+              <%= link_to "Decline", friendship_path(user), :method => "delete", :class => 'request-decline btn btn-mini' %>
+            <% else %>
+              <%= link_to "Add friend", friendships_path(:id => user.id), :method => "post", :class => 'btn btn-mini' %>
+            <% end %>
+          </td>
+        </tr>
+      <% end %>
+    </table>
+  </div>
+</div>
+<%= link_to "Back to Contacts List", contacts_path %>

@@ -1,0 +1,29 @@
+<div class="panel panel-default">
+  <div class="panel-heading"> <h3> All Contacts </h3></div>
+  <br>
+  <br>
+  <div class="panel-body">
+    <table class="table table-bordered table-hover" style="width: 50%" >
+      <tr>
+        <th>First Name</th>
+        <th>Last Name</th>
+        <th>Number</th>
+        <th>Email Address</th>
+      </tr>
+      <% @contacts.each do |contact| %>
+        <tr>
+          <td><%= link_to contact.first_name , contact_path(contact) %></td>
+          <td><%= contact.last_name %></td>
+          <td><%= contact.number %></td>
+          <td><%= contact.email_id %></td>
+        </tr>
+      <% end %>
+    </table>
+  </div>
+</div>
+
+
+<%= link_to "Create a New Contact", new_contact_path %> |
+<%= link_to "Invite Friend", users_path %> |
+<%= link_to "View Friend List", friendships_path %> |
+<%= link_to "Log Out" , destroy_user_session_path , method: :delete %>

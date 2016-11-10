@@ -1,0 +1,21 @@
+<div class="panel panel-default">
+	<div class="container-fluid">
+		<!-- <div class="row"> -->
+		<div class="form-group row">
+		  <div class="col-sm-3">
+				<h3><strong>First Name: <%= @contact.first_name %></strong></h3>
+				<div class="container">
+					<p>Last Name: <%= @contact.last_name %></p>
+					<p>Number: <%= @contact.number %></p>
+					<p>Email Address: <%= @contact.email_id %></p>
+				</div>
+			</div>
+		</div>
+		<!-- </div> -->
+		<%= link_to "<< Back to Contacts List", contacts_path %> |
+		<%= link_to "Delete", contact_path(@contact) , method: :delete , data: {confirm: "You want to delete the contact"} %> |
+		<%= link_to "Edit", edit_contact_path(@contact) %>
+		<br>
+		<br>
+	</div>
+</div>
